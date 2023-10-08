@@ -1,11 +1,51 @@
 "use client";
-
+import { useState } from "react";
 import { Suspense } from "react";
 import ThreeScene from "./components/ThreeScene";
-import Model from "./components/Model";
+import ThreeModel from "./components/ThreeModel";
 import { OrbitControls, Stars } from "@react-three/drei";
 import NavBar from "./components/NavBar";
+import LocationCard from "./components/LocationCard";
+import AportationForm from "./components/cardviews/AportationForm";
+
 export default function Home() {
+    const [isModalMenuOpen, setIsModalMenuOpen] = useState(false);
+    const [action, setAction] = useState("location");
+
+    function toggleModalPopup(currentAction) {
+        setIsModalMenuOpen((prev) => !prev);
+        if (currentAction) {
+            setAction(currentAction);
+        }
+    }
+
+    function ChangeModalForAportation() {
+        setAction("aportation");
+    }
+
+    const ModalMenu = () => {
+        return (
+            <div
+                className="fixed top-0 left-0 z-30 w-full h-full flex items-center justify-center bg-black bg-opacity-50"
+                onClick={() => {
+                    toggleModalPopup(undefined);
+                }}
+            >
+                <div
+                    onClick={(event) => {
+                        event.stopPropagation();
+                    }}
+                >
+                    {action === "location" ? (
+                        <LocationCard onDeeperButtonClick={ChangeModalForAportation} />
+                    ) : (
+                        <AportationForm />
+                    )}
+                </div>
+            </div>
+        );
+    };
+
     return (
         <>
             <div className="absolute w-full h-full z-0">
@@ -16,13 +56,14 @@ export default function Home() {
                     <directionalLight intensity={0.5} position={[0, 10, 0]} />
                     <OrbitControls autoRotate />
                     <Suspense fallback={null}>
-                        <Model />
+                        <ThreeModel />
                     </Suspense>
                     <Stars />
                 </ThreeScene>
             </div>
-            <main className="flex min-h-screen flex-col bg-black z-10">
+            <main className="flex min-h-screen flex-col z-10">
                 <NavBar />
+                {isModalMenuOpen ? <ModalMenu /> : null}
                 <div className="flex flex-col z-20">
                     <div className="flex min-w-fit">
                         <div className="flex items-center justify-center flex-col min-h-fit w-2/5 p-32 gap-8">
@@ -32,7 +73,12 @@ export default function Home() {
                             <p className="text-2xl text-gray-400 ">
                                 Descubre y aprende sobre los distintos cuerpos de agua que existen en el mundo.
                             </p>
-                            <button className="text-2xl w-full bg-green hover:bg-green/80 text-white py-4 rounded transition-all">
+                            <button
+                                className="text-2xl w-full bg-green hover:bg-green/80 text-white py-4 rounded transition-all"
+                                onClick={() => {
+                                    toggleModalPopup("location");
+                                }}
+                            >
                                 Comienza a explorar
                             </button>
                         </div>

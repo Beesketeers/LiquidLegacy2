@@ -1,6 +1,6 @@
 const NavBar = () => {
     return (
-        <div className="flex items-center justify-between w-full bg-blue/20 backdrop-blur px-32 py-3">
+        <div className="flex items-center justify-between w-full bg-blue/20 backdrop-blur-[1px] px-32 py-3">
             <div className="flex items-center gap-1">
                 <img className="w-20 h-20" src="assets/logo.png" alt="Liquid Legacy" />
                 <p className="text-3xl text-white font-miniolla">Liquid Legacy</p>
