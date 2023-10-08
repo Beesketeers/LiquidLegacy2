@@ -20,7 +20,7 @@ export default function Home() {
     }, 250);
   }, []);
 
-  const [isModalMenuOpen, setIsModalMenuOpen] = useState(false)
+
   const [action, setAction] = useState('location')
   const [modelFront, setModelFront] = useState(false)
   const [rotateEnabled, setRotateEnabled] = useState(true)
@@ -82,7 +82,6 @@ export default function Home() {
         </ThreeScene>
       </div>
       <NavBar bgValue='/20' />
-      {isModalMenuOpen ? <ModalMenu /> : null}
       <main className='flex min-h-screen abso flex-col z-10'>
         <div className={`flex flex-col ${modelFront ? '-z-100' : 'z-20'}`}>
           <div className='flex min-w-fit h-[calc(100vh-104px)]'>

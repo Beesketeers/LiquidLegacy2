@@ -4,7 +4,7 @@ import AboutView from './cardviews/AboutView'
 import SpeciesView from './cardviews/SpeciesView'
 import ContributionView from './cardviews/ContributionView'
 
-const LocationView = ({ onDeeperButtonClick }) => {
+const LocationView = ({ setIsModalMenuOpen }) => {
   const [selectView, setSelectView] = useState('about')
 
   const handleButtonClick = (button) => {
@@ -12,7 +12,7 @@ const LocationView = ({ onDeeperButtonClick }) => {
   }
 
   const handleDeeperButtonClick = () => {
-    onDeeperButtonClick(true)
+    setIsModalMenuOpen(true)
   }
 
   return (
