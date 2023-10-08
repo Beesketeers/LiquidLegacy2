@@ -12,6 +12,8 @@ import gsap from 'gsap'
 export default function Home() {
   const [isModalMenuOpen, setIsModalMenuOpen] = useState(false)
   const [action, setAction] = useState('location')
+  const [modelFront, setModelFront] = useState(false)
+  const [rotateEnabled, setRotateEnabled] = useState(true)
 
   function toggleModalPopup(currentAction) {
     setIsModalMenuOpen((prev) => !prev)
@@ -44,17 +46,19 @@ export default function Home() {
   const hideTitle = (e) => {
     const tl = gsap.timeline({ defaults: { duration: 1 } })
     tl.fromTo('.title', { opacity: 1 }, { opacity: 0 })
+    setModelFront(true)
+    setRotateEnabled(false)
   }
 
   return (
     <>
-      <div className='absolute w-full z-0 h-screen'>
+      <div className='absolute w-full h-screen'>
         <ThreeScene>
           <color attach='background' args={['#00204a']} />
-          <ambientLight intensity={0.3} />
+          {/* <ambientLight intensity={0.3} /> */}
           <hemisphereLight intensity={1} />
-          <directionalLight intensity={0.5} position={[0, 10, 0]} />
-          <OrbitControls autoRotate enableZoom=/>
+          {/* <directionalLight intensity={0.5} position={[0, 10, 0]} /> */}
+          <OrbitControls autoRotate={rotateEnabled} enableZoom={false} enablePan={false} />
           <Suspense fallback={null}>
             <ThreeModel />
           </Suspense>
@@ -64,8 +68,8 @@ export default function Home() {
       <NavBar />
       {isModalMenuOpen ? <ModalMenu /> : null}
       <main className='flex min-h-screen abso flex-col z-10'>
-        <div className='flex flex-col z-20'>
-          <div className='flex min-w-fit'>
+        <div className={`flex flex-col ${modelFront ? '-z-100' : 'z-20'}`}>
+          <div className='flex min-w-fit h-[calc(100vh-104px)]'>
             <div className='title flex items-center justify-center flex-col min-h-fit w-2/5 p-32 gap-8'>
               <p className='text-[24px] sm:text-sm md:text-md lg:text-lg xl:text-5xl text-white font-semibold min-h-fit'>
                 Saving the world, one drop at a time
@@ -74,10 +78,12 @@ export default function Home() {
                 Descubre y aprende sobre los distintos cuerpos de agua que existen en el mundo.
               </p>
               <button
-                className='text-[16px] sm:text-sm md:text-md lg:text-lg w-full bg-green hover:bg-green/80 text-white py-4 rounded transition-all'
+                disabled={modelFront}
+                className={`text-[16px] sm:text-sm md:text-md lg:text-lg w-full bg-green hover:bg-green/80 text-white py-4 rounded transition-all`}
                 onClick={(e) => {
                   hideTitle(e)
-                  toggleModalPopup('location')
+                  console.log(e)
+                  // toggleModalPopup('location')
                 }}>
                 Comienza a explorar
               </button>
