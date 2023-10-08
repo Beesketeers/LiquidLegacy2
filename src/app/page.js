@@ -1,5 +1,5 @@
 'use client'
-import { useState, Suspense } from 'react'
+import { useState, Suspense, useEffect } from 'react'
 
 import ThreeScene from './components/ThreeScene'
 import ThreeModel from './components/ThreeModel'
@@ -10,6 +10,16 @@ import AportationForm from './components/cardviews/AportationForm'
 import gsap from 'gsap'
 
 export default function Home() {
+
+  const[isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 250);
+  }, []);
+
   const [isModalMenuOpen, setIsModalMenuOpen] = useState(false)
   const [action, setAction] = useState('location')
   const [modelFront, setModelFront] = useState(false)
@@ -52,6 +62,12 @@ export default function Home() {
 
   return (
     <>
+      {isLoading && (
+        <div className='loader fixed top-0 left-0 z-50 w-full h-full flex items-center justify-center bg-white'>
+          Loading...
+        </div>
+      )}
+
       <div className='absolute w-full h-screen'>
         <ThreeScene>
           <color attach='background' args={['#00204a']} />
