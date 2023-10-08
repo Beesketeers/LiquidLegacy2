@@ -1,8 +1,9 @@
 import Link from 'next/link'
 
-const NavBar = () => {
+const NavBar = ({ bgValue }) => {
   return (
-    <div className='navbar select-none flex items-center justify-between w-full bg-blue/20 backdrop-blur-[1px] px-32 py-3'>
+    <div
+      className={`navbar select-none flex items-center justify-between w-full bg-[#00204A]${bgValue} backdrop-blur-[1px] px-32 py-3`}>
       <div className='flex items-center gap-1'>
         <img className='w-20 h-20' src='assets/logo.png' alt='Liquid Legacy' />
 

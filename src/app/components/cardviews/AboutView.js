@@ -3,7 +3,12 @@ import React from 'react'
 const aboutView = () => {
   return (
     <div className=' py-4 w-full break-words'>
-        La presa "El papalote" es un cuerpo de agua Lorem ipsum dlkldkdlekdlkel kdldklk l kl klkdelkdlk l lk lkl k0eo o epeoeipei iopeio ipeo o ipsm esoeopeopfieofipeoffeofeopfepfiepoeofeofieopfioepfeofieofeiofepofeiof diodieo o io oioi oioioioi ioioioioiooippoiopioiooppppiiioiopopoop
+      Playa Pelicano es una pequeña región de playa virgen ubicada en el noroeste del estado de Sonora, siendo una zona
+      que conecta con el Golfo de Baja California, lugar donde habita un gran número de especies animales endémicas en
+      la región. Actualmente, la pesca ilegal e indiscriminada representa la principal amenaza para los...
+      <span>
+        <button className='text-indigo-400 underline'>Ver mas</button>
+      </span>
     </div>
   )
 }

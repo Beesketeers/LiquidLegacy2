@@ -65,7 +65,7 @@ export default function Home() {
           <Stars />
         </ThreeScene>
       </div>
-      <NavBar />
+      <NavBar bgValue='/20' />
       {isModalMenuOpen ? <ModalMenu /> : null}
       <main className='flex min-h-screen abso flex-col z-10'>
         <div className={`flex flex-col ${modelFront ? '-z-100' : 'z-20'}`}>
