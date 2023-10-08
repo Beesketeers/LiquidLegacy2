@@ -3,8 +3,12 @@ module.exports = {
     content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
     theme: {
         extend: {
+            fontFamily: {
+                miniolla: ["miniolla", "sans-serif"],
+            },
             colors: {
-                colorName: "#000000",
+                blue: "#00204A",
+                green: "#3F9F7F",
             },
         },
     },
