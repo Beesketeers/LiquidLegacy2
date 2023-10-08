@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: "miniolla";
+    src: url("../../public/miniolla.ttf");
+}
+
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
