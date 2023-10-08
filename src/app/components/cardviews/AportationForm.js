@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 
+
 const AutorizationForm = () => {
     const [formData, setFormData] = useState({
         nombre: "",
@@ -21,7 +22,7 @@ const AutorizationForm = () => {
     };
 
     return (
-        <div className="max-w-md min-h-[700px] max-h-[900px] bg-white border border-[#00000073] shadow-lg rounded-xl">
+        <div className="p-8 border rounded-3xl  bg-white w-full h-full">
             <h2 className="text-xl mb-4 font-bold">Formulario de Comunidad</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
@@ -57,7 +58,7 @@ const AutorizationForm = () => {
                         Mensaje
                     </label>
                     <textarea
-                        className="resize-none shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className=" h-full resize-none shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-scroll"
                         id="mensaje"
                         placeholder="Escribe tu mensaje aquí"
                         name="mensaje"
@@ -67,7 +68,7 @@ const AutorizationForm = () => {
                 </div>
                 <div className="flex items-center justify-between">
                     <button
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        className="bg-[#3F9F7F] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                         type="submit"
                     >
                         Enviar
